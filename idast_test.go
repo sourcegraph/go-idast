@@ -52,7 +52,9 @@ func checkUnique(srcFilename string, ns []NodeWithId, t *testing.T) {
 	ids := make(map[string]NodeWithId, 0)
 	for _, n := range ns {
 		if existing, hasExisting := ids[n.Id.String()]; hasExisting {
-			t.Errorf("duplicate NodeId '%s' for nodes:\n%v\n\n-- and --\n\n%v", n.Id.String(), existing.Node, n.Node)
+			t.Errorf("%s: duplicate NodeId '%s' for nodes:\n%v\n\n-- and --\n\n%v\n", srcFilename, n.Id.String(), pretty(existing.Node), pretty(n.Node))
+		} else {
+			ids[n.Id.String()] = n
 		}
 	}
 }
