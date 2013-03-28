@@ -18,7 +18,7 @@ import (
 
 func TestXref(t *testing.T) {
 	fset := token.NewFileSet()
-	pkgs, err := parser.ParseDir(fset, "testdata", goFilesOnly, parser.ParseComments)
+	pkgs, err := parser.ParseDir(fset, "testdata", goFilesOnly, parser.ParseComments|parser.AllErrors|parser.DeclarationErrors)
 	if err != nil {
 		t.Errorf("Error parsing testdata dir: %v", err)
 		return
