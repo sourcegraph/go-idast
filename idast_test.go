@@ -33,6 +33,22 @@ func TestCollect(t *testing.T) {
 	}
 }
 
+func TestMap(t *testing.T) {
+	src := "1 + 2 + 3"
+	x, err := parser.ParseExpr(src)
+	if err != nil {
+		t.Errorf("Error parsing expr `%s`: %v", src, err)
+		return
+	}
+
+	m := Map(x)
+
+	mx := m[x]
+	if mx.String() != "BinaryExpr" {
+		t.Errorf("want BinaryExpr, got %v", mx.String())
+	}
+}
+
 func BenchmarkCollect(b *testing.B) {
 	b.StopTimer()
 
@@ -49,6 +65,25 @@ func BenchmarkCollect(b *testing.B) {
 			for _, file := range pkg.Files {
 				collect(file)
 			}
+		}
+	}
+}
+
+func BenchmarkMap(b *testing.B) {
+	b.StopTimer()
+	src := "1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 + 11 + 12 + 13 + 14"
+	x, err := parser.ParseExpr(src)
+	if err != nil {
+		b.Errorf("Error parsing expr `%s`: %v", src, err)
+		return
+	}
+	b.StartTimer()
+
+	for i := 0; i < b.N; i++ {
+		m := Map(x)
+		mx := m[x]
+		if mx.String() != "BinaryExpr" {
+			b.Errorf("want %v", mx.String())
 		}
 	}
 }
