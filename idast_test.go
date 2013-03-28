@@ -16,7 +16,7 @@ import (
 	"testing"
 )
 
-func TestXref(t *testing.T) {
+func TestCollect(t *testing.T) {
 	fset := token.NewFileSet()
 	pkgs, err := parser.ParseDir(fset, "testdata", goFilesOnly, parser.ParseComments|parser.AllErrors|parser.DeclarationErrors)
 	if err != nil {
