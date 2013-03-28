@@ -1,30 +1,30 @@
  File            | package vars\n\nfunc A(b, c str | vars.go
  Ident           | vars                            | vars.go/Name/Ident
- FuncDecl        | func A(b, c string, d int) (w,  | vars.go/Decls/0/FuncDecl
- Ident           | A                               | vars.go/Decls/0/FuncDecl/Name/Ident
- FuncType        | func(b, c string, d int) (w, x  | vars.go/Decls/0/FuncDecl/Type/FuncType
- FieldList       | (n/a)                           | vars.go/Decls/0/FuncDecl/Type/FuncType/Params/FieldList
- Field           | (n/a)                           | vars.go/Decls/0/FuncDecl/Type/FuncType/Params/FieldList/List/0/Field
- Ident           | b                               | vars.go/Decls/0/FuncDecl/Type/FuncType/Params/FieldList/List/0/Field/Names/b/Ident
- Ident           | c                               | vars.go/Decls/0/FuncDecl/Type/FuncType/Params/FieldList/List/0/Field/Names/c/Ident
- Ident           | string                          | vars.go/Decls/0/FuncDecl/Type/FuncType/Params/FieldList/List/0/Field/Type/Ident
- Field           | (n/a)                           | vars.go/Decls/0/FuncDecl/Type/FuncType/Params/FieldList/List/1/Field
- Ident           | d                               | vars.go/Decls/0/FuncDecl/Type/FuncType/Params/FieldList/List/1/Field/Names/d/Ident
- Ident           | int                             | vars.go/Decls/0/FuncDecl/Type/FuncType/Params/FieldList/List/1/Field/Type/Ident
- FieldList       | (n/a)                           | vars.go/Decls/0/FuncDecl/Type/FuncType/Results/FieldList
- Field           | (n/a)                           | vars.go/Decls/0/FuncDecl/Type/FuncType/Results/FieldList/List/0/Field
- Ident           | w                               | vars.go/Decls/0/FuncDecl/Type/FuncType/Results/FieldList/List/0/Field/Names/w/Ident
- Ident           | x                               | vars.go/Decls/0/FuncDecl/Type/FuncType/Results/FieldList/List/0/Field/Names/x/Ident
- Ident           | float                           | vars.go/Decls/0/FuncDecl/Type/FuncType/Results/FieldList/List/0/Field/Type/Ident
- Field           | (n/a)                           | vars.go/Decls/0/FuncDecl/Type/FuncType/Results/FieldList/List/1/Field
- Ident           | y                               | vars.go/Decls/0/FuncDecl/Type/FuncType/Results/FieldList/List/1/Field/Names/y/Ident
- Ident           | bool                            | vars.go/Decls/0/FuncDecl/Type/FuncType/Results/FieldList/List/1/Field/Type/Ident
- BlockStmt       | {\n	return len(b+c) + d\n}      | vars.go/Decls/0/FuncDecl/Body/BlockStmt
- ReturnStmt      | return len(b+c) + d             | vars.go/Decls/0/FuncDecl/Body/BlockStmt/List/0/ReturnStmt
- BinaryExpr      | len(b+c) + d                    | vars.go/Decls/0/FuncDecl/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr
- CallExpr        | len(b + c)                      | vars.go/Decls/0/FuncDecl/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/X/CallExpr
- Ident           | len                             | vars.go/Decls/0/FuncDecl/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/X/CallExpr/Fun/Ident
- BinaryExpr      | b + c                           | vars.go/Decls/0/FuncDecl/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/X/CallExpr/Args/0/BinaryExpr
- Ident           | b                               | vars.go/Decls/0/FuncDecl/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/X/CallExpr/Args/0/BinaryExpr/X/Ident
- Ident           | c                               | vars.go/Decls/0/FuncDecl/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/X/CallExpr/Args/0/BinaryExpr/Y/Ident
- Ident           | d                               | vars.go/Decls/0/FuncDecl/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/Y/Ident
+ FuncDecl        | func A(b, c string, d int) (w,  | vars.go/Decls/0/FuncDecl:A
+ Ident           | A                               | vars.go/Decls/0/FuncDecl:A/Name/Ident
+ FuncType        | func(b, c string, d int) (w, x  | vars.go/Decls/0/FuncDecl:A/Type/FuncType
+ FieldList       | (n/a)                           | vars.go/Decls/0/FuncDecl:A/Type/FuncType/Params/FieldList
+ Field           | (n/a)                           | vars.go/Decls/0/FuncDecl:A/Type/FuncType/Params/FieldList/List/0/Field
+ Ident           | b                               | vars.go/Decls/0/FuncDecl:A/Type/FuncType/Params/FieldList/List/0/Field/Names/b/Ident
+ Ident           | c                               | vars.go/Decls/0/FuncDecl:A/Type/FuncType/Params/FieldList/List/0/Field/Names/c/Ident
+ Ident           | string                          | vars.go/Decls/0/FuncDecl:A/Type/FuncType/Params/FieldList/List/0/Field/Type/Ident
+ Field           | (n/a)                           | vars.go/Decls/0/FuncDecl:A/Type/FuncType/Params/FieldList/List/1/Field
+ Ident           | d                               | vars.go/Decls/0/FuncDecl:A/Type/FuncType/Params/FieldList/List/1/Field/Names/d/Ident
+ Ident           | int                             | vars.go/Decls/0/FuncDecl:A/Type/FuncType/Params/FieldList/List/1/Field/Type/Ident
+ FieldList       | (n/a)                           | vars.go/Decls/0/FuncDecl:A/Type/FuncType/Results/FieldList
+ Field           | (n/a)                           | vars.go/Decls/0/FuncDecl:A/Type/FuncType/Results/FieldList/List/0/Field
+ Ident           | w                               | vars.go/Decls/0/FuncDecl:A/Type/FuncType/Results/FieldList/List/0/Field/Names/w/Ident
+ Ident           | x                               | vars.go/Decls/0/FuncDecl:A/Type/FuncType/Results/FieldList/List/0/Field/Names/x/Ident
+ Ident           | float                           | vars.go/Decls/0/FuncDecl:A/Type/FuncType/Results/FieldList/List/0/Field/Type/Ident
+ Field           | (n/a)                           | vars.go/Decls/0/FuncDecl:A/Type/FuncType/Results/FieldList/List/1/Field
+ Ident           | y                               | vars.go/Decls/0/FuncDecl:A/Type/FuncType/Results/FieldList/List/1/Field/Names/y/Ident
+ Ident           | bool                            | vars.go/Decls/0/FuncDecl:A/Type/FuncType/Results/FieldList/List/1/Field/Type/Ident
+ BlockStmt       | {\n	return len(b+c) + d\n}      | vars.go/Decls/0/FuncDecl:A/Body/BlockStmt
+ ReturnStmt      | return len(b+c) + d             | vars.go/Decls/0/FuncDecl:A/Body/BlockStmt/List/0/ReturnStmt
+ BinaryExpr      | len(b+c) + d                    | vars.go/Decls/0/FuncDecl:A/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr
+ CallExpr        | len(b + c)                      | vars.go/Decls/0/FuncDecl:A/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/X/CallExpr
+ Ident           | len                             | vars.go/Decls/0/FuncDecl:A/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/X/CallExpr/Fun/Ident
+ BinaryExpr      | b + c                           | vars.go/Decls/0/FuncDecl:A/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/X/CallExpr/Args/0/BinaryExpr
+ Ident           | b                               | vars.go/Decls/0/FuncDecl:A/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/X/CallExpr/Args/0/BinaryExpr/X/Ident
+ Ident           | c                               | vars.go/Decls/0/FuncDecl:A/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/X/CallExpr/Args/0/BinaryExpr/Y/Ident
+ Ident           | d                               | vars.go/Decls/0/FuncDecl:A/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/Y/Ident

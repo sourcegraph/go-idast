@@ -168,12 +168,14 @@ func idComponent(node ast.Node) string {
 	case *ast.ValueSpec:
 
 	case *ast.TypeSpec:
+		return "TypeSpec:" + n.Name.Name
 
 	case *ast.BadDecl:
 
 	case *ast.GenDecl:
 
 	case *ast.FuncDecl:
+		return "FuncDecl:" + n.Name.Name
 
 	// Files and packages
 	case *ast.File:
