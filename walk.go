@@ -20,25 +20,33 @@ type Visitor interface {
 
 func walkIdentList(v Visitor, list []*ast.Ident, id NodeId) {
 	for _, x := range list {
-		walk(v, x, id.pushed(x.Name))
+		id.push(x.Name)
+		walk(v, x, id)
+		id.pop()
 	}
 }
 
 func walkExprList(v Visitor, list []ast.Expr, id NodeId) {
 	for i, x := range list {
-		walk(v, x, id.pushed(strconv.Itoa(i)))
+		id.push(strconv.Itoa(i))
+		walk(v, x, id)
+		id.pop()
 	}
 }
 
 func walkStmtList(v Visitor, list []ast.Stmt, id NodeId) {
 	for i, x := range list {
-		walk(v, x, id.pushed(strconv.Itoa(i)))
+		id.push(strconv.Itoa(i))
+		walk(v, x, id)
+		id.pop()
 	}
 }
 
 func walkDeclList(v Visitor, list []ast.Decl, id NodeId) {
 	for i, x := range list {
-		walk(v, x, id.pushed(strconv.Itoa(i)))
+		id.push(strconv.Itoa(i))
+		walk(v, x, id)
+		id.pop()
 	}
 }
 
