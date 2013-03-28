@@ -32,7 +32,7 @@ func (nid *NodeId) pop() {
 	*nid = (*nid)[:len(*nid)-1]
 }
 
-// Returns a copy of nid with cs pushed onto the end.
-func (nid *NodeId) pushed(cs ...string) NodeId {
-	return append(nid.dup(), cs...)
+// Returns a copy of nid with c pushed onto the end.
+func (nid *NodeId) pushed(c string) NodeId {
+	return append(nid.dup(), c)
 }

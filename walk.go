@@ -579,9 +579,13 @@ func walk(v Visitor, node ast.Node, id NodeId) {
 		// nodes
 
 	case *ast.Package:
+		id.push("Files")
 		for _, f := range n.Files {
-			walk(v, f, id.pushed("Files", f.Name.Name))
+			id.push(f.Name.Name)
+			walk(v, f, id)
+			id.pop()
 		}
+		id.pop()
 
 	default:
 		fmt.Printf("ast.walk: unexpected node type %T", n)
