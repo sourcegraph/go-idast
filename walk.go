@@ -201,26 +201,26 @@ func walk(v Visitor, node ast.Node, id NodeId) {
 
 	case *ast.CommentGroup:
 		for i, c := range n.List {
-			walk(v, c, id.pushed(strconv.Itoa(i)))
+			walk(v, c, id.pushed("List", strconv.Itoa(i)))
 		}
 		id.pop()
 
 	case *ast.Field:
 		if n.Doc != nil {
-			walk(v, n.Doc, id)
+			walk(v, n.Doc, id.pushed("Doc"))
 		}
-		walkIdentList(v, n.Names, id)
-		walk(v, n.Type, id)
+		walkIdentList(v, n.Names, id.pushed("Names"))
+		walk(v, n.Type, id.pushed("Type"))
 		if n.Tag != nil {
-			walk(v, n.Tag, id)
+			walk(v, n.Tag, id.pushed("Tag"))
 		}
 		if n.Comment != nil {
-			walk(v, n.Comment, id)
+			walk(v, n.Comment, id.pushed("Comment"))
 		}
 
 	case *ast.FieldList:
-		for _, f := range n.List {
-			walk(v, f, id)
+		for i, f := range n.List {
+			walk(v, f, id.pushed("List", strconv.Itoa(i)))
 		}
 
 	// Expressions
@@ -235,206 +235,206 @@ func walk(v Visitor, node ast.Node, id NodeId) {
 
 	case *ast.Ellipsis:
 		if n.Elt != nil {
-			walk(v, n.Elt, id)
+			walk(v, n.Elt, id.pushed("Elt"))
 		}
 
 	case *ast.FuncLit:
-		walk(v, n.Type, id)
-		walk(v, n.Body, id)
+		walk(v, n.Type, id.pushed("Type"))
+		walk(v, n.Body, id.pushed("Body"))
 
 	case *ast.CompositeLit:
 		if n.Type != nil {
-			walk(v, n.Type, id)
+			walk(v, n.Type, id.pushed("Type"))
 		}
-		walkExprList(v, n.Elts, id)
+		walkExprList(v, n.Elts, id.pushed("Elts"))
 
 	case *ast.ParenExpr:
-		walk(v, n.X, id)
+		walk(v, n.X, id.pushed("X"))
 
 	case *ast.SelectorExpr:
-		walk(v, n.X, id)
-		walk(v, n.Sel, id)
+		walk(v, n.X, id.pushed("X"))
+		walk(v, n.Sel, id.pushed("Sel"))
 
 	case *ast.IndexExpr:
-		walk(v, n.X, id)
-		walk(v, n.Index, id)
+		walk(v, n.X, id.pushed("X"))
+		walk(v, n.Index, id.pushed("Index"))
 
 	case *ast.SliceExpr:
-		walk(v, n.X, id)
+		walk(v, n.X, id.pushed("X"))
 		if n.Low != nil {
-			walk(v, n.Low, id)
+			walk(v, n.Low, id.pushed("Low"))
 		}
 		if n.High != nil {
-			walk(v, n.High, id)
+			walk(v, n.High, id.pushed("High"))
 		}
 
 	case *ast.TypeAssertExpr:
-		walk(v, n.X, id)
+		walk(v, n.X, id.pushed("X"))
 		if n.Type != nil {
-			walk(v, n.Type, id)
+			walk(v, n.Type, id.pushed("Type"))
 		}
 
 	case *ast.CallExpr:
-		walk(v, n.Fun, id)
-		walkExprList(v, n.Args, id)
+		walk(v, n.Fun, id.pushed("Fun"))
+		walkExprList(v, n.Args, id.pushed("Args"))
 
 	case *ast.StarExpr:
-		walk(v, n.X, id)
+		walk(v, n.X, id.pushed("X"))
 
 	case *ast.UnaryExpr:
-		walk(v, n.X, id)
+		walk(v, n.X, id.pushed("X"))
 
 	case *ast.BinaryExpr:
-		walk(v, n.X, id)
-		walk(v, n.Y, id)
+		walk(v, n.X, id.pushed("X"))
+		walk(v, n.Y, id.pushed("Y"))
 
 	case *ast.KeyValueExpr:
-		walk(v, n.Key, id)
-		walk(v, n.Value, id)
+		walk(v, n.Key, id.pushed("Key"))
+		walk(v, n.Value, id.pushed("Value"))
 
 	// Types
 	case *ast.ArrayType:
 		if n.Len != nil {
-			walk(v, n.Len, id)
+			walk(v, n.Len, id.pushed("Len"))
 		}
-		walk(v, n.Elt, id)
+		walk(v, n.Elt, id.pushed("Elt"))
 
 	case *ast.StructType:
-		walk(v, n.Fields, id)
+		walk(v, n.Fields, id.pushed("Fields"))
 
 	case *ast.FuncType:
 		if n.Params != nil {
-			walk(v, n.Params, id)
+			walk(v, n.Params, id.pushed("Params"))
 		}
 		if n.Results != nil {
-			walk(v, n.Results, id)
+			walk(v, n.Results, id.pushed("Results"))
 		}
 
 	case *ast.InterfaceType:
-		walk(v, n.Methods, id)
+		walk(v, n.Methods, id.pushed("Methods"))
 
 	case *ast.MapType:
-		walk(v, n.Key, id)
-		walk(v, n.Value, id)
+		walk(v, n.Key, id.pushed("Key"))
+		walk(v, n.Value, id.pushed("Value"))
 
 	case *ast.ChanType:
-		walk(v, n.Value, id)
+		walk(v, n.Value, id.pushed("Value"))
 
 	// Statements
 	case *ast.BadStmt:
 		// nothing to do
 
 	case *ast.DeclStmt:
-		walk(v, n.Decl, id)
+		walk(v, n.Decl, id.pushed("Decl"))
 
 	case *ast.EmptyStmt:
 		// nothing to do
 
 	case *ast.LabeledStmt:
-		walk(v, n.Label, id)
-		walk(v, n.Stmt, id)
+		walk(v, n.Label, id.pushed("Label"))
+		walk(v, n.Stmt, id.pushed("Stmt"))
 
 	case *ast.ExprStmt:
-		walk(v, n.X, id)
+		walk(v, n.X, id.pushed("X"))
 
 	case *ast.SendStmt:
-		walk(v, n.Chan, id)
-		walk(v, n.Value, id)
+		walk(v, n.Chan, id.pushed("Chan"))
+		walk(v, n.Value, id.pushed("Value"))
 
 	case *ast.IncDecStmt:
-		walk(v, n.X, id)
+		walk(v, n.X, id.pushed("X"))
 
 	case *ast.AssignStmt:
-		walkExprList(v, n.Lhs, id.pushed("lhs"))
-		walkExprList(v, n.Rhs, id.pushed("rhs"))
+		walkExprList(v, n.Lhs, id.pushed("Lhs"))
+		walkExprList(v, n.Rhs, id.pushed("Rhs"))
 
 	case *ast.GoStmt:
-		walk(v, n.Call, id)
+		walk(v, n.Call, id.pushed("Call"))
 
 	case *ast.DeferStmt:
-		walk(v, n.Call, id)
+		walk(v, n.Call, id.pushed("Call"))
 
 	case *ast.ReturnStmt:
-		walkExprList(v, n.Results, id)
+		walkExprList(v, n.Results, id.pushed("Results"))
 
 	case *ast.BranchStmt:
 		if n.Label != nil {
-			walk(v, n.Label, id)
+			walk(v, n.Label, id.pushed("Label"))
 		}
 
 	case *ast.BlockStmt:
-		walkStmtList(v, n.List, id)
+		walkStmtList(v, n.List, id.pushed("List"))
 
 	case *ast.IfStmt:
 		if n.Init != nil {
-			walk(v, n.Init, id)
+			walk(v, n.Init, id.pushed("Init"))
 		}
-		walk(v, n.Cond, id)
-		walk(v, n.Body, id)
+		walk(v, n.Cond, id.pushed("Cond"))
+		walk(v, n.Body, id.pushed("Body"))
 		if n.Else != nil {
-			walk(v, n.Else, id)
+			walk(v, n.Else, id.pushed("Else"))
 		}
 
 	case *ast.CaseClause:
-		walkExprList(v, n.List, id)
-		walkStmtList(v, n.Body, id)
+		walkExprList(v, n.List, id.pushed("List"))
+		walkStmtList(v, n.Body, id.pushed("Body"))
 
 	case *ast.SwitchStmt:
 		if n.Init != nil {
-			walk(v, n.Init, id)
+			walk(v, n.Init, id.pushed("Init"))
 		}
 		if n.Tag != nil {
-			walk(v, n.Tag, id)
+			walk(v, n.Tag, id.pushed("Tag"))
 		}
-		walk(v, n.Body, id)
+		walk(v, n.Body, id.pushed("Body"))
 
 	case *ast.TypeSwitchStmt:
 		if n.Init != nil {
-			walk(v, n.Init, id)
+			walk(v, n.Init, id.pushed("Init"))
 		}
-		walk(v, n.Assign, id)
-		walk(v, n.Body, id)
+		walk(v, n.Assign, id.pushed("Assign"))
+		walk(v, n.Body, id.pushed("Body"))
 
 	case *ast.CommClause:
 		if n.Comm != nil {
-			walk(v, n.Comm, id)
+			walk(v, n.Comm, id.pushed("Comm"))
 		}
-		walkStmtList(v, n.Body, id)
+		walkStmtList(v, n.Body, id.pushed("Body"))
 
 	case *ast.SelectStmt:
-		walk(v, n.Body, id)
+		walk(v, n.Body, id.pushed("Body"))
 
 	case *ast.ForStmt:
 		if n.Init != nil {
-			walk(v, n.Init, id)
+			walk(v, n.Init, id.pushed("Init"))
 		}
 		if n.Cond != nil {
-			walk(v, n.Cond, id)
+			walk(v, n.Cond, id.pushed("Cond"))
 		}
 		if n.Post != nil {
-			walk(v, n.Post, id)
+			walk(v, n.Post, id.pushed("Post"))
 		}
-		walk(v, n.Body, id)
+		walk(v, n.Body, id.pushed("Body"))
 
 	case *ast.RangeStmt:
-		walk(v, n.Key, id)
+		walk(v, n.Key, id.pushed("Key"))
 		if n.Value != nil {
-			walk(v, n.Value, id)
+			walk(v, n.Value, id.pushed("Value"))
 		}
-		walk(v, n.X, id)
-		walk(v, n.Body, id)
+		walk(v, n.X, id.pushed("X"))
+		walk(v, n.Body, id.pushed("Body"))
 
 	// Declarations
 	case *ast.ImportSpec:
 		if n.Doc != nil {
-			walk(v, n.Doc, id)
+			walk(v, n.Doc, id.pushed("Doc"))
 		}
 		if n.Name != nil {
-			walk(v, n.Name, id)
+			walk(v, n.Name, id.pushed("Name"))
 		}
-		walk(v, n.Path, id)
+		walk(v, n.Path, id.pushed("Path"))
 		if n.Comment != nil {
-			walk(v, n.Comment, id)
+			walk(v, n.Comment, id.pushed("Comment"))
 		}
 
 	case *ast.ValueSpec:
@@ -452,12 +452,12 @@ func walk(v Visitor, node ast.Node, id NodeId) {
 
 	case *ast.TypeSpec:
 		if n.Doc != nil {
-			walk(v, n.Doc, id)
+			walk(v, n.Doc, id.pushed("Doc"))
 		}
-		walk(v, n.Name, id)
-		walk(v, n.Type, id)
+		walk(v, n.Name, id.pushed("Name"))
+		walk(v, n.Type, id.pushed("Type"))
 		if n.Comment != nil {
-			walk(v, n.Comment, id)
+			walk(v, n.Comment, id.pushed("Comment"))
 		}
 
 	case *ast.BadDecl:
@@ -465,23 +465,23 @@ func walk(v Visitor, node ast.Node, id NodeId) {
 
 	case *ast.GenDecl:
 		if n.Doc != nil {
-			walk(v, n.Doc, id)
+			walk(v, n.Doc, id.pushed("Doc"))
 		}
-		for _, s := range n.Specs {
-			walk(v, s, id)
+		for i, s := range n.Specs {
+			walk(v, s, id.pushed("Specs", strconv.Itoa(i)))
 		}
 
 	case *ast.FuncDecl:
 		if n.Doc != nil {
-			walk(v, n.Doc, id)
+			walk(v, n.Doc, id.pushed("Doc"))
 		}
 		if n.Recv != nil {
-			walk(v, n.Recv, id)
+			walk(v, n.Recv, id.pushed("Recv"))
 		}
-		walk(v, n.Name, id)
-		walk(v, n.Type, id)
+		walk(v, n.Name, id.pushed("Name"))
+		walk(v, n.Type, id.pushed("Type"))
 		if n.Body != nil {
-			walk(v, n.Body, id)
+			walk(v, n.Body, id.pushed("Body"))
 		}
 
 	// Files and packages
@@ -497,7 +497,7 @@ func walk(v Visitor, node ast.Node, id NodeId) {
 
 	case *ast.Package:
 		for _, f := range n.Files {
-			walk(v, f, id.pushed(f.Name.Name))
+			walk(v, f, id.pushed("Files", f.Name.Name))
 		}
 
 	default:
