@@ -33,6 +33,26 @@ func TestCollect(t *testing.T) {
 	}
 }
 
+func BenchmarkCollect(b *testing.B) {
+	b.StopTimer()
+
+	fset := token.NewFileSet()
+	pkgs, err := parser.ParseDir(fset, "testdata", goFilesOnly, parser.ParseComments|parser.AllErrors|parser.DeclarationErrors)
+	if err != nil {
+		b.Errorf("Error parsing testdata dir: %v", err)
+		return
+	}
+	b.StartTimer()
+
+	for i := 0; i < b.N; i++ {
+		for _, pkg := range pkgs {
+			for _, file := range pkg.Files {
+				collect(file)
+			}
+		}
+	}
+}
+
 func goFilesOnly(file os.FileInfo) bool {
 	return file.Mode().IsRegular() && path.Ext(file.Name()) == ".go"
 }
