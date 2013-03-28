@@ -177,7 +177,6 @@ func idComponent(node ast.Node) string {
 
 	// Files and packages
 	case *ast.File:
-		return n.Name.Name + ".go"
 
 	case *ast.Package:
 
@@ -581,7 +580,7 @@ func walk(v Visitor, node ast.Node, id NodeId) {
 	case *ast.Package:
 		id.push("Files")
 		for _, f := range n.Files {
-			id.push(f.Name.Name)
+			id.push(f.Name.Name + ".go")
 			walk(v, f, id)
 			id.pop()
 		}
