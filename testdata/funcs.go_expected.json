@@ -3,20 +3,20 @@
  FuncDecl        | func A(b, c string, d int) (w,  | vars.go/Decls/0/FuncDecl
  Ident           | A                               | vars.go/Decls/0/FuncDecl/Name/Ident
  FuncType        | func(b, c string, d int) (w, x  | vars.go/Decls/0/FuncDecl/Type/FuncType
- FieldList       | &{74 [0xc200089700 0xc200089740 | vars.go/Decls/0/FuncDecl/Type/FuncType/Params/FieldList
- Field           | &{<nil> [b c] string <nil> <nil | vars.go/Decls/0/FuncDecl/Type/FuncType/Params/FieldList/List/0/Field
+ FieldList       | (n/a)                           | vars.go/Decls/0/FuncDecl/Type/FuncType/Params/FieldList
+ Field           | (n/a)                           | vars.go/Decls/0/FuncDecl/Type/FuncType/Params/FieldList/List/0/Field
  Ident           | b                               | vars.go/Decls/0/FuncDecl/Type/FuncType/Params/FieldList/List/0/Field/Names/b/Ident
  Ident           | c                               | vars.go/Decls/0/FuncDecl/Type/FuncType/Params/FieldList/List/0/Field/Names/c/Ident
  Ident           | string                          | vars.go/Decls/0/FuncDecl/Type/FuncType/Params/FieldList/List/0/Field/Type/Ident
- Field           | &{<nil> [d] int <nil> <nil>}    | vars.go/Decls/0/FuncDecl/Type/FuncType/Params/FieldList/List/1/Field
+ Field           | (n/a)                           | vars.go/Decls/0/FuncDecl/Type/FuncType/Params/FieldList/List/1/Field
  Ident           | d                               | vars.go/Decls/0/FuncDecl/Type/FuncType/Params/FieldList/List/1/Field/Names/d/Ident
  Ident           | int                             | vars.go/Decls/0/FuncDecl/Type/FuncType/Params/FieldList/List/1/Field/Type/Ident
- FieldList       | &{95 [0xc200089780 0xc2000897c0 | vars.go/Decls/0/FuncDecl/Type/FuncType/Results/FieldList
- Field           | &{<nil> [w x] float <nil> <nil> | vars.go/Decls/0/FuncDecl/Type/FuncType/Results/FieldList/List/0/Field
+ FieldList       | (n/a)                           | vars.go/Decls/0/FuncDecl/Type/FuncType/Results/FieldList
+ Field           | (n/a)                           | vars.go/Decls/0/FuncDecl/Type/FuncType/Results/FieldList/List/0/Field
  Ident           | w                               | vars.go/Decls/0/FuncDecl/Type/FuncType/Results/FieldList/List/0/Field/Names/w/Ident
  Ident           | x                               | vars.go/Decls/0/FuncDecl/Type/FuncType/Results/FieldList/List/0/Field/Names/x/Ident
  Ident           | float                           | vars.go/Decls/0/FuncDecl/Type/FuncType/Results/FieldList/List/0/Field/Type/Ident
- Field           | &{<nil> [y] bool <nil> <nil>}   | vars.go/Decls/0/FuncDecl/Type/FuncType/Results/FieldList/List/1/Field
+ Field           | (n/a)                           | vars.go/Decls/0/FuncDecl/Type/FuncType/Results/FieldList/List/1/Field
  Ident           | y                               | vars.go/Decls/0/FuncDecl/Type/FuncType/Results/FieldList/List/1/Field/Names/y/Ident
  Ident           | bool                            | vars.go/Decls/0/FuncDecl/Type/FuncType/Results/FieldList/List/1/Field/Type/Ident
  BlockStmt       | {\n}                            | vars.go/Decls/0/FuncDecl/Body/BlockStmt

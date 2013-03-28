@@ -96,7 +96,7 @@ func pretty(n ast.Node) string {
 	printer.Fprint(&b, emptyFileSet, n)
 	s := b.String()
 	if s == "" {
-		return fmt.Sprintf("%v", n)
+		return "(n/a)"
 	} else {
 		return s
 	}
