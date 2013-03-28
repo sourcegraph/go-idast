@@ -49,6 +49,20 @@ func TestMap(t *testing.T) {
 	}
 }
 
+func TestMapStability(t *testing.T) {
+	src := "1 + 2 + 3"
+	x, _ := parser.ParseExpr(src)
+
+	m1 := Map(x)
+	m2 := Map(x)
+
+	m1x := m1[x]
+	m2x := m2[x]
+	if m1x == nil || m2x == nil || m1x.String() != m2x.String() {
+		t.Errorf("expected map to be stable, got %v and %v", m1x.String(), m2x.String())
+	}
+}
+
 func BenchmarkCollect(b *testing.B) {
 	b.StopTimer()
 
