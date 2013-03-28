@@ -57,7 +57,7 @@ func walkDeclList(v Visitor, list []ast.Decl, id NodeId) {
 // call of w.Visit(nil, id).
 //
 func Walk(v Visitor, n ast.Node) {
-	id := make(NodeId, 0)
+	id := make(NodeId, 0, 100)
 	walk(v, n, id)
 }
 
@@ -208,8 +208,11 @@ func walk(v Visitor, node ast.Node, id NodeId) {
 		// nothing to do
 
 	case *ast.CommentGroup:
+		id.push("List")
 		for i, c := range n.List {
-			walk(v, c, id.pushed("List", strconv.Itoa(i)))
+			id.push(strconv.Itoa(i))
+			walk(v, c, id)
+			id.pop()
 		}
 		id.pop()
 
@@ -217,8 +220,12 @@ func walk(v Visitor, node ast.Node, id NodeId) {
 		if n.Doc != nil {
 			walk(v, n.Doc, id.pushed("Doc"))
 		}
-		walkIdentList(v, n.Names, id.pushed("Names"))
-		walk(v, n.Type, id.pushed("Type"))
+		id.push("Names")
+		walkIdentList(v, n.Names, id)
+		id.pop()
+		id.push("Type")
+		walk(v, n.Type, id)
+		id.pop()
 		if n.Tag != nil {
 			walk(v, n.Tag, id.pushed("Tag"))
 		}
@@ -227,9 +234,13 @@ func walk(v Visitor, node ast.Node, id NodeId) {
 		}
 
 	case *ast.FieldList:
+		id.push("List")
 		for i, f := range n.List {
-			walk(v, f, id.pushed("List", strconv.Itoa(i)))
+			id.push(strconv.Itoa(i))
+			walk(v, f, id)
+			id.pop()
 		}
+		id.pop()
 
 	// Expressions
 	case *ast.BadExpr:
@@ -257,23 +268,39 @@ func walk(v Visitor, node ast.Node, id NodeId) {
 		walkExprList(v, n.Elts, id.pushed("Elts"))
 
 	case *ast.ParenExpr:
-		walk(v, n.X, id.pushed("X"))
+		id.push("X")
+		walk(v, n.X, id)
+		id.pop()
 
 	case *ast.SelectorExpr:
-		walk(v, n.X, id.pushed("X"))
-		walk(v, n.Sel, id.pushed("Sel"))
+		id.push("X")
+		walk(v, n.X, id)
+		id.pop()
+		id.push("Sel")
+		walk(v, n.Sel, id)
+		id.pop()
 
 	case *ast.IndexExpr:
-		walk(v, n.X, id.pushed("X"))
-		walk(v, n.Index, id.pushed("Index"))
+		id.push("X")
+		walk(v, n.X, id)
+		id.pop()
+		id.push("Index")
+		walk(v, n.Index, id)
+		id.pop()
 
 	case *ast.SliceExpr:
-		walk(v, n.X, id.pushed("X"))
+		id.push("X")
+		walk(v, n.X, id)
+		id.pop()
 		if n.Low != nil {
-			walk(v, n.Low, id.pushed("Low"))
+			id.push("Low")
+			walk(v, n.Low, id)
+			id.pop()
 		}
 		if n.High != nil {
-			walk(v, n.High, id.pushed("High"))
+			id.push("High")
+			walk(v, n.High, id)
+			id.pop()
 		}
 
 	case *ast.TypeAssertExpr:
@@ -283,22 +310,38 @@ func walk(v Visitor, node ast.Node, id NodeId) {
 		}
 
 	case *ast.CallExpr:
-		walk(v, n.Fun, id.pushed("Fun"))
-		walkExprList(v, n.Args, id.pushed("Args"))
+		id.push("Fun")
+		walk(v, n.Fun, id)
+		id.pop()
+		id.push("Args")
+		walkExprList(v, n.Args, id)
+		id.pop()
 
 	case *ast.StarExpr:
-		walk(v, n.X, id.pushed("X"))
+		id.push("X")
+		walk(v, n.X, id)
+		id.pop()
 
 	case *ast.UnaryExpr:
-		walk(v, n.X, id.pushed("X"))
+		id.push("X")
+		walk(v, n.X, id)
+		id.pop()
 
 	case *ast.BinaryExpr:
-		walk(v, n.X, id.pushed("X"))
-		walk(v, n.Y, id.pushed("Y"))
+		id.push("X")
+		walk(v, n.X, id)
+		id.pop()
+		id.push("Y")
+		walk(v, n.Y, id)
+		id.pop()
 
 	case *ast.KeyValueExpr:
-		walk(v, n.Key, id.pushed("Key"))
-		walk(v, n.Value, id.pushed("Value"))
+		id.push("Key")
+		walk(v, n.Key, id)
+		id.pop()
+		id.push("Value")
+		walk(v, n.Value, id)
+		id.pop()
 
 	// Types
 	case *ast.ArrayType:
@@ -333,7 +376,9 @@ func walk(v Visitor, node ast.Node, id NodeId) {
 		// nothing to do
 
 	case *ast.DeclStmt:
-		walk(v, n.Decl, id.pushed("Decl"))
+		id.push("Decl")
+		walk(v, n.Decl, id)
+		id.pop()
 
 	case *ast.EmptyStmt:
 		// nothing to do
@@ -343,7 +388,9 @@ func walk(v Visitor, node ast.Node, id NodeId) {
 		walk(v, n.Stmt, id.pushed("Stmt"))
 
 	case *ast.ExprStmt:
-		walk(v, n.X, id.pushed("X"))
+		id.push("X")
+		walk(v, n.X, id)
+		id.pop()
 
 	case *ast.SendStmt:
 		walk(v, n.Chan, id.pushed("Chan"))
@@ -353,8 +400,12 @@ func walk(v Visitor, node ast.Node, id NodeId) {
 		walk(v, n.X, id.pushed("X"))
 
 	case *ast.AssignStmt:
-		walkExprList(v, n.Lhs, id.pushed("Lhs"))
-		walkExprList(v, n.Rhs, id.pushed("Rhs"))
+		id.push("Lhs")
+		walkExprList(v, n.Lhs, id)
+		id.pop()
+		id.push("Rhs")
+		walkExprList(v, n.Rhs, id)
+		id.pop()
 
 	case *ast.GoStmt:
 		walk(v, n.Call, id.pushed("Call"))
@@ -363,7 +414,9 @@ func walk(v Visitor, node ast.Node, id NodeId) {
 		walk(v, n.Call, id.pushed("Call"))
 
 	case *ast.ReturnStmt:
-		walkExprList(v, n.Results, id.pushed("Results"))
+		id.push("Results")
+		walkExprList(v, n.Results, id)
+		id.pop()
 
 	case *ast.BranchStmt:
 		if n.Label != nil {
@@ -371,14 +424,22 @@ func walk(v Visitor, node ast.Node, id NodeId) {
 		}
 
 	case *ast.BlockStmt:
-		walkStmtList(v, n.List, id.pushed("List"))
+		id.push("List")
+		walkStmtList(v, n.List, id)
+		id.pop()
 
 	case *ast.IfStmt:
 		if n.Init != nil {
-			walk(v, n.Init, id.pushed("Init"))
+			id.push("Init")
+			walk(v, n.Init, id)
+			id.pop()
 		}
-		walk(v, n.Cond, id.pushed("Cond"))
-		walk(v, n.Body, id.pushed("Body"))
+		id.push("Cond")
+		walk(v, n.Cond, id)
+		id.pop()
+		id.push("Body")
+		walk(v, n.Body, id)
+		id.pop()
 		if n.Else != nil {
 			walk(v, n.Else, id.pushed("Else"))
 		}
@@ -447,13 +508,21 @@ func walk(v Visitor, node ast.Node, id NodeId) {
 
 	case *ast.ValueSpec:
 		if n.Doc != nil {
-			walk(v, n.Doc, id.pushed("Doc"))
+			id.push("Doc")
+			walk(v, n.Doc, id)
+			id.pop()
 		}
-		walkIdentList(v, n.Names, id.pushed("Names"))
+		id.push("Names")
+		walkIdentList(v, n.Names, id)
+		id.pop()
 		if n.Type != nil {
-			walk(v, n.Type, id.pushed("Type"))
+			id.push("Type")
+			walk(v, n.Type, id)
+			id.pop()
 		}
-		walkExprList(v, n.Values, id.pushed("Values"))
+		id.push("Values")
+		walkExprList(v, n.Values, id)
+		id.pop()
 		if n.Comment != nil {
 			walk(v, n.Comment, id.pushed("Comment"))
 		}
@@ -473,11 +542,17 @@ func walk(v Visitor, node ast.Node, id NodeId) {
 
 	case *ast.GenDecl:
 		if n.Doc != nil {
-			walk(v, n.Doc, id.pushed("Doc"))
+			id.push("Doc")
+			walk(v, n.Doc, id)
+			id.pop()
 		}
+		id.push("Specs")
 		for i, s := range n.Specs {
-			walk(v, s, id.pushed("Specs", strconv.Itoa(i)))
+			id.push(strconv.Itoa(i))
+			walk(v, s, id)
+			id.pop()
 		}
+		id.pop()
 
 	case *ast.FuncDecl:
 		if n.Doc != nil {
