@@ -94,5 +94,10 @@ var emptyFileSet = token.NewFileSet()
 func pretty(n ast.Node) string {
 	var b bytes.Buffer
 	printer.Fprint(&b, emptyFileSet, n)
-	return b.String()
+	s := b.String()
+	if s == "" {
+		return fmt.Sprintf("%v", n)
+	} else {
+		return s
+	}
 }
