@@ -19,14 +19,12 @@
  Field           | (n/a)                           | vars.go/Decls/0/FuncDecl/Type/FuncType/Results/FieldList/List/1/Field
  Ident           | y                               | vars.go/Decls/0/FuncDecl/Type/FuncType/Results/FieldList/List/1/Field/Names/y/Ident
  Ident           | bool                            | vars.go/Decls/0/FuncDecl/Type/FuncType/Results/FieldList/List/1/Field/Type/Ident
- BlockStmt       | {\n	return len(b+c) + d + d\n}  | vars.go/Decls/0/FuncDecl/Body/BlockStmt
- ReturnStmt      | return len(b+c) + d + d         | vars.go/Decls/0/FuncDecl/Body/BlockStmt/List/0/ReturnStmt
- BinaryExpr      | len(b+c) + d + d                | vars.go/Decls/0/FuncDecl/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr
- BinaryExpr      | len(b+c) + d                    | vars.go/Decls/0/FuncDecl/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/X/BinaryExpr
- CallExpr        | len(b + c)                      | vars.go/Decls/0/FuncDecl/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/X/BinaryExpr/X/CallExpr
- Ident           | len                             | vars.go/Decls/0/FuncDecl/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/X/BinaryExpr/X/CallExpr/Fun/Ident
- BinaryExpr      | b + c                           | vars.go/Decls/0/FuncDecl/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/X/BinaryExpr/X/CallExpr/Args/0/BinaryExpr
- Ident           | b                               | vars.go/Decls/0/FuncDecl/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/X/BinaryExpr/X/CallExpr/Args/0/BinaryExpr/X/Ident
- Ident           | c                               | vars.go/Decls/0/FuncDecl/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/X/BinaryExpr/X/CallExpr/Args/0/BinaryExpr/Y/Ident
- Ident           | d                               | vars.go/Decls/0/FuncDecl/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/X/BinaryExpr/Y/Ident
+ BlockStmt       | {\n	return len(b+c) + d\n}      | vars.go/Decls/0/FuncDecl/Body/BlockStmt
+ ReturnStmt      | return len(b+c) + d             | vars.go/Decls/0/FuncDecl/Body/BlockStmt/List/0/ReturnStmt
+ BinaryExpr      | len(b+c) + d                    | vars.go/Decls/0/FuncDecl/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr
+ CallExpr        | len(b + c)                      | vars.go/Decls/0/FuncDecl/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/X/CallExpr
+ Ident           | len                             | vars.go/Decls/0/FuncDecl/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/X/CallExpr/Fun/Ident
+ BinaryExpr      | b + c                           | vars.go/Decls/0/FuncDecl/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/X/CallExpr/Args/0/BinaryExpr
+ Ident           | b                               | vars.go/Decls/0/FuncDecl/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/X/CallExpr/Args/0/BinaryExpr/X/Ident
+ Ident           | c                               | vars.go/Decls/0/FuncDecl/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/X/CallExpr/Args/0/BinaryExpr/Y/Ident
  Ident           | d                               | vars.go/Decls/0/FuncDecl/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/Y/Ident
