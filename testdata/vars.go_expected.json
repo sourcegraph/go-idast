@@ -1,0 +1,16 @@
+ File            | package vars\n\nvar A = 1\nvar  | vars.go
+ Ident           | vars                            | vars.go/Name/Ident
+ GenDecl         | var A = 1                       | vars.go/Decls/0/GenDecl
+ ValueSpec       | A = 1                           | vars.go/Decls/0/GenDecl/ValueSpec
+ Ident           | A                               | vars.go/Decls/0/GenDecl/ValueSpec/Names/A/Ident
+ BasicLit        | 1                               | vars.go/Decls/0/GenDecl/ValueSpec/Values/0/BasicLit
+ GenDecl         | var b = A + 2                   | vars.go/Decls/1/GenDecl
+ ValueSpec       | b = A + 2                       | vars.go/Decls/1/GenDecl/ValueSpec
+ Ident           | b                               | vars.go/Decls/1/GenDecl/ValueSpec/Names/b/Ident
+ BinaryExpr      | A + 2                           | vars.go/Decls/1/GenDecl/ValueSpec/Values/0/BinaryExpr
+ Ident           | A                               | vars.go/Decls/1/GenDecl/ValueSpec/Values/0/BinaryExpr/Ident
+ BasicLit        | 2                               | vars.go/Decls/1/GenDecl/ValueSpec/Values/0/BinaryExpr/BasicLit
+ GenDecl         | var c = "foo"                   | vars.go/Decls/2/GenDecl
+ ValueSpec       | c = "foo"                       | vars.go/Decls/2/GenDecl/ValueSpec
+ Ident           | c                               | vars.go/Decls/2/GenDecl/ValueSpec/Names/c/Ident
+ BasicLit        | "foo"                           | vars.go/Decls/2/GenDecl/ValueSpec/Values/0/BasicLit
