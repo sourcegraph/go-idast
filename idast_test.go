@@ -30,6 +30,9 @@ func TestCollect(t *testing.T) {
 			checkUnique(filename, ns, t)
 			checkOutput(filename, ns, t)
 		}
+		ns := collect(pkg)
+		checkUnique("testdata/"+pkg.Name, ns, t)
+		checkOutput("testdata/"+pkg.Name, ns, t)
 	}
 }
 

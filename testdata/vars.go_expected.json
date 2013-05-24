@@ -1,16 +1,16 @@
- File            | package vars\n\nvar A = 1\nvar  | vars.go
- Ident           | vars                            | vars.go/Name/Ident
- GenDecl         | var A = 1                       | vars.go/Decls/0/GenDecl
- ValueSpec       | A = 1                           | vars.go/Decls/0/GenDecl/Specs/0/ValueSpec
- Ident           | A                               | vars.go/Decls/0/GenDecl/Specs/0/ValueSpec/Names/A/Ident
- BasicLit        | 1                               | vars.go/Decls/0/GenDecl/Specs/0/ValueSpec/Values/0/BasicLit
- GenDecl         | var b = A + 2                   | vars.go/Decls/1/GenDecl
- ValueSpec       | b = A + 2                       | vars.go/Decls/1/GenDecl/Specs/0/ValueSpec
- Ident           | b                               | vars.go/Decls/1/GenDecl/Specs/0/ValueSpec/Names/b/Ident
- BinaryExpr      | A + 2                           | vars.go/Decls/1/GenDecl/Specs/0/ValueSpec/Values/0/BinaryExpr
- Ident           | A                               | vars.go/Decls/1/GenDecl/Specs/0/ValueSpec/Values/0/BinaryExpr/X/Ident
- BasicLit        | 2                               | vars.go/Decls/1/GenDecl/Specs/0/ValueSpec/Values/0/BinaryExpr/Y/BasicLit
- GenDecl         | var c = "foo"                   | vars.go/Decls/2/GenDecl
- ValueSpec       | c = "foo"                       | vars.go/Decls/2/GenDecl/Specs/0/ValueSpec
- Ident           | c                               | vars.go/Decls/2/GenDecl/Specs/0/ValueSpec/Names/c/Ident
- BasicLit        | "foo"                           | vars.go/Decls/2/GenDecl/Specs/0/ValueSpec/Values/0/BasicLit
+ File            | package vars\n\nvar A = 1\nvar  | 
+ Ident           | vars                            | Name/Ident
+ GenDecl         | var A = 1                       | Decls/0/GenDecl
+ ValueSpec       | A = 1                           | Decls/0/GenDecl/Specs/0/ValueSpec
+ Ident           | A                               | Decls/0/GenDecl/Specs/0/ValueSpec/Names/A/Ident
+ BasicLit        | 1                               | Decls/0/GenDecl/Specs/0/ValueSpec/Values/0/BasicLit
+ GenDecl         | var b = A + 2                   | Decls/1/GenDecl
+ ValueSpec       | b = A + 2                       | Decls/1/GenDecl/Specs/0/ValueSpec
+ Ident           | b                               | Decls/1/GenDecl/Specs/0/ValueSpec/Names/b/Ident
+ BinaryExpr      | A + 2                           | Decls/1/GenDecl/Specs/0/ValueSpec/Values/0/BinaryExpr
+ Ident           | A                               | Decls/1/GenDecl/Specs/0/ValueSpec/Values/0/BinaryExpr/X/Ident
+ BasicLit        | 2                               | Decls/1/GenDecl/Specs/0/ValueSpec/Values/0/BinaryExpr/Y/BasicLit
+ GenDecl         | var c = "foo"                   | Decls/2/GenDecl
+ ValueSpec       | c = "foo"                       | Decls/2/GenDecl/Specs/0/ValueSpec
+ Ident           | c                               | Decls/2/GenDecl/Specs/0/ValueSpec/Names/c/Ident
+ BasicLit        | "foo"                           | Decls/2/GenDecl/Specs/0/ValueSpec/Values/0/BasicLit

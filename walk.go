@@ -179,7 +179,9 @@ func idComponent(node ast.Node) string {
 
 	// Files and packages
 	case *ast.File:
-		return n.Name.Name + ".go"
+		// The filename is pushed and popped when the *ast.Package is encountered, because only the
+		// package knows the filename (the file only knows its package).
+		return ""
 
 	case *ast.Package:
 
@@ -582,8 +584,10 @@ func walk(v Visitor, node ast.Node, id NodeId) {
 
 	case *ast.Package:
 		id.push("Files")
-		for _, f := range n.Files {
+		for filename, f := range n.Files {
+			id.push(filename)
 			walk(v, f, id)
+			id.pop()
 		}
 		id.pop()
 
