@@ -3,6 +3,7 @@ package idast
 import (
 	"fmt"
 	"go/ast"
+	"path"
 	"reflect"
 	"strconv"
 )
@@ -585,7 +586,7 @@ func walk(v Visitor, node ast.Node, id NodeId) {
 	case *ast.Package:
 		id.push("Files")
 		for filename, f := range n.Files {
-			id.push(filename)
+			id.push(path.Base(filename))
 			walk(v, f, id)
 			id.pop()
 		}
