@@ -32,12 +32,12 @@
  Field           | (n/a)                           | Package/Files/funcs.go/Decls/0/FuncDecl:A/Type/FuncType/Results/FieldList/List/0/Field
  Ident           | w                               | Package/Files/funcs.go/Decls/0/FuncDecl:A/Type/FuncType/Results/FieldList/List/0/Field/Names/w/Ident
  Ident           | x                               | Package/Files/funcs.go/Decls/0/FuncDecl:A/Type/FuncType/Results/FieldList/List/0/Field/Names/x/Ident
- Ident           | float                           | Package/Files/funcs.go/Decls/0/FuncDecl:A/Type/FuncType/Results/FieldList/List/0/Field/Type/Ident
+ Ident           | int                             | Package/Files/funcs.go/Decls/0/FuncDecl:A/Type/FuncType/Results/FieldList/List/0/Field/Type/Ident
  Field           | (n/a)                           | Package/Files/funcs.go/Decls/0/FuncDecl:A/Type/FuncType/Results/FieldList/List/1/Field
  Ident           | y                               | Package/Files/funcs.go/Decls/0/FuncDecl:A/Type/FuncType/Results/FieldList/List/1/Field/Names/y/Ident
  Ident           | bool                            | Package/Files/funcs.go/Decls/0/FuncDecl:A/Type/FuncType/Results/FieldList/List/1/Field/Type/Ident
- BlockStmt       | {\n	return len(b+c) + d\n}      | Package/Files/funcs.go/Decls/0/FuncDecl:A/Body/BlockStmt
- ReturnStmt      | return len(b+c) + d             | Package/Files/funcs.go/Decls/0/FuncDecl:A/Body/BlockStmt/List/0/ReturnStmt
+ BlockStmt       | {\n	return len(b+c) + d, 0, tru | Package/Files/funcs.go/Decls/0/FuncDecl:A/Body/BlockStmt
+ ReturnStmt      | return len(b+c) + d, 0, true    | Package/Files/funcs.go/Decls/0/FuncDecl:A/Body/BlockStmt/List/0/ReturnStmt
  BinaryExpr      | len(b+c) + d                    | Package/Files/funcs.go/Decls/0/FuncDecl:A/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr
  CallExpr        | len(b + c)                      | Package/Files/funcs.go/Decls/0/FuncDecl:A/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/X/CallExpr
  Ident           | len                             | Package/Files/funcs.go/Decls/0/FuncDecl:A/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/X/CallExpr/Fun/Ident
@@ -45,3 +45,26 @@
  Ident           | b                               | Package/Files/funcs.go/Decls/0/FuncDecl:A/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/X/CallExpr/Args/0/BinaryExpr/X/Ident
  Ident           | c                               | Package/Files/funcs.go/Decls/0/FuncDecl:A/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/X/CallExpr/Args/0/BinaryExpr/Y/Ident
  Ident           | d                               | Package/Files/funcs.go/Decls/0/FuncDecl:A/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/Y/Ident
+ BasicLit        | 0                               | Package/Files/funcs.go/Decls/0/FuncDecl:A/Body/BlockStmt/List/0/ReturnStmt/Results/1/BasicLit
+ Ident           | true                            | Package/Files/funcs.go/Decls/0/FuncDecl:A/Body/BlockStmt/List/0/ReturnStmt/Results/2/Ident
+ FuncDecl        | func B(_, _ string, _ int) (_,  | Package/Files/funcs.go/Decls/1/FuncDecl:B
+ Ident           | B                               | Package/Files/funcs.go/Decls/1/FuncDecl:B/Name/Ident
+ FuncType        | func(_, _ string, _ int) (_, _  | Package/Files/funcs.go/Decls/1/FuncDecl:B/Type/FuncType
+ FieldList       | (n/a)                           | Package/Files/funcs.go/Decls/1/FuncDecl:B/Type/FuncType/Params/FieldList
+ Field           | (n/a)                           | Package/Files/funcs.go/Decls/1/FuncDecl:B/Type/FuncType/Params/FieldList/List/0/Field
+ Ident           | _                               | Package/Files/funcs.go/Decls/1/FuncDecl:B/Type/FuncType/Params/FieldList/List/0/Field/Names/_:0/Ident
+ Ident           | _                               | Package/Files/funcs.go/Decls/1/FuncDecl:B/Type/FuncType/Params/FieldList/List/0/Field/Names/_:1/Ident
+ Ident           | string                          | Package/Files/funcs.go/Decls/1/FuncDecl:B/Type/FuncType/Params/FieldList/List/0/Field/Type/Ident
+ Field           | (n/a)                           | Package/Files/funcs.go/Decls/1/FuncDecl:B/Type/FuncType/Params/FieldList/List/1/Field
+ Ident           | _                               | Package/Files/funcs.go/Decls/1/FuncDecl:B/Type/FuncType/Params/FieldList/List/1/Field/Names/_:0/Ident
+ Ident           | int                             | Package/Files/funcs.go/Decls/1/FuncDecl:B/Type/FuncType/Params/FieldList/List/1/Field/Type/Ident
+ FieldList       | (n/a)                           | Package/Files/funcs.go/Decls/1/FuncDecl:B/Type/FuncType/Results/FieldList
+ Field           | (n/a)                           | Package/Files/funcs.go/Decls/1/FuncDecl:B/Type/FuncType/Results/FieldList/List/0/Field
+ Ident           | _                               | Package/Files/funcs.go/Decls/1/FuncDecl:B/Type/FuncType/Results/FieldList/List/0/Field/Names/_:0/Ident
+ Ident           | _                               | Package/Files/funcs.go/Decls/1/FuncDecl:B/Type/FuncType/Results/FieldList/List/0/Field/Names/_:1/Ident
+ Ident           | string                          | Package/Files/funcs.go/Decls/1/FuncDecl:B/Type/FuncType/Results/FieldList/List/0/Field/Type/Ident
+ Field           | (n/a)                           | Package/Files/funcs.go/Decls/1/FuncDecl:B/Type/FuncType/Results/FieldList/List/1/Field
+ Ident           | _                               | Package/Files/funcs.go/Decls/1/FuncDecl:B/Type/FuncType/Results/FieldList/List/1/Field/Names/_:0/Ident
+ Ident           | int                             | Package/Files/funcs.go/Decls/1/FuncDecl:B/Type/FuncType/Results/FieldList/List/1/Field/Type/Ident
+ BlockStmt       | {\n	return\n}                   | Package/Files/funcs.go/Decls/1/FuncDecl:B/Body/BlockStmt
+ ReturnStmt      | return                          | Package/Files/funcs.go/Decls/1/FuncDecl:B/Body/BlockStmt/List/0/ReturnStmt

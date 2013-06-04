@@ -15,12 +15,12 @@
  Field           | (n/a)                           | Decls/0/FuncDecl:A/Type/FuncType/Results/FieldList/List/0/Field
  Ident           | w                               | Decls/0/FuncDecl:A/Type/FuncType/Results/FieldList/List/0/Field/Names/w/Ident
  Ident           | x                               | Decls/0/FuncDecl:A/Type/FuncType/Results/FieldList/List/0/Field/Names/x/Ident
- Ident           | float                           | Decls/0/FuncDecl:A/Type/FuncType/Results/FieldList/List/0/Field/Type/Ident
+ Ident           | int                             | Decls/0/FuncDecl:A/Type/FuncType/Results/FieldList/List/0/Field/Type/Ident
  Field           | (n/a)                           | Decls/0/FuncDecl:A/Type/FuncType/Results/FieldList/List/1/Field
  Ident           | y                               | Decls/0/FuncDecl:A/Type/FuncType/Results/FieldList/List/1/Field/Names/y/Ident
  Ident           | bool                            | Decls/0/FuncDecl:A/Type/FuncType/Results/FieldList/List/1/Field/Type/Ident
- BlockStmt       | {\n	return len(b+c) + d\n}      | Decls/0/FuncDecl:A/Body/BlockStmt
- ReturnStmt      | return len(b+c) + d             | Decls/0/FuncDecl:A/Body/BlockStmt/List/0/ReturnStmt
+ BlockStmt       | {\n	return len(b+c) + d, 0, tru | Decls/0/FuncDecl:A/Body/BlockStmt
+ ReturnStmt      | return len(b+c) + d, 0, true    | Decls/0/FuncDecl:A/Body/BlockStmt/List/0/ReturnStmt
  BinaryExpr      | len(b+c) + d                    | Decls/0/FuncDecl:A/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr
  CallExpr        | len(b + c)                      | Decls/0/FuncDecl:A/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/X/CallExpr
  Ident           | len                             | Decls/0/FuncDecl:A/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/X/CallExpr/Fun/Ident
@@ -28,3 +28,26 @@
  Ident           | b                               | Decls/0/FuncDecl:A/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/X/CallExpr/Args/0/BinaryExpr/X/Ident
  Ident           | c                               | Decls/0/FuncDecl:A/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/X/CallExpr/Args/0/BinaryExpr/Y/Ident
  Ident           | d                               | Decls/0/FuncDecl:A/Body/BlockStmt/List/0/ReturnStmt/Results/0/BinaryExpr/Y/Ident
+ BasicLit        | 0                               | Decls/0/FuncDecl:A/Body/BlockStmt/List/0/ReturnStmt/Results/1/BasicLit
+ Ident           | true                            | Decls/0/FuncDecl:A/Body/BlockStmt/List/0/ReturnStmt/Results/2/Ident
+ FuncDecl        | func B(_, _ string, _ int) (_,  | Decls/1/FuncDecl:B
+ Ident           | B                               | Decls/1/FuncDecl:B/Name/Ident
+ FuncType        | func(_, _ string, _ int) (_, _  | Decls/1/FuncDecl:B/Type/FuncType
+ FieldList       | (n/a)                           | Decls/1/FuncDecl:B/Type/FuncType/Params/FieldList
+ Field           | (n/a)                           | Decls/1/FuncDecl:B/Type/FuncType/Params/FieldList/List/0/Field
+ Ident           | _                               | Decls/1/FuncDecl:B/Type/FuncType/Params/FieldList/List/0/Field/Names/_:0/Ident
+ Ident           | _                               | Decls/1/FuncDecl:B/Type/FuncType/Params/FieldList/List/0/Field/Names/_:1/Ident
+ Ident           | string                          | Decls/1/FuncDecl:B/Type/FuncType/Params/FieldList/List/0/Field/Type/Ident
+ Field           | (n/a)                           | Decls/1/FuncDecl:B/Type/FuncType/Params/FieldList/List/1/Field
+ Ident           | _                               | Decls/1/FuncDecl:B/Type/FuncType/Params/FieldList/List/1/Field/Names/_:0/Ident
+ Ident           | int                             | Decls/1/FuncDecl:B/Type/FuncType/Params/FieldList/List/1/Field/Type/Ident
+ FieldList       | (n/a)                           | Decls/1/FuncDecl:B/Type/FuncType/Results/FieldList
+ Field           | (n/a)                           | Decls/1/FuncDecl:B/Type/FuncType/Results/FieldList/List/0/Field
+ Ident           | _                               | Decls/1/FuncDecl:B/Type/FuncType/Results/FieldList/List/0/Field/Names/_:0/Ident
+ Ident           | _                               | Decls/1/FuncDecl:B/Type/FuncType/Results/FieldList/List/0/Field/Names/_:1/Ident
+ Ident           | string                          | Decls/1/FuncDecl:B/Type/FuncType/Results/FieldList/List/0/Field/Type/Ident
+ Field           | (n/a)                           | Decls/1/FuncDecl:B/Type/FuncType/Results/FieldList/List/1/Field
+ Ident           | _                               | Decls/1/FuncDecl:B/Type/FuncType/Results/FieldList/List/1/Field/Names/_:0/Ident
+ Ident           | int                             | Decls/1/FuncDecl:B/Type/FuncType/Results/FieldList/List/1/Field/Type/Ident
+ BlockStmt       | {\n	return\n}                   | Decls/1/FuncDecl:B/Body/BlockStmt
+ ReturnStmt      | return                          | Decls/1/FuncDecl:B/Body/BlockStmt/List/0/ReturnStmt

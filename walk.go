@@ -20,8 +20,12 @@ type Visitor interface {
 // Helper functions for common node lists. They may be empty.
 
 func walkIdentList(v Visitor, list []*ast.Ident, id NodeId) {
-	for _, x := range list {
-		id.push(x.Name)
+	for i, x := range list {
+		name := x.Name
+		if name == "_" {
+			name += ":" + strconv.Itoa(i)
+		}
+		id.push(name)
 		walk(v, x, id)
 		id.pop()
 	}
